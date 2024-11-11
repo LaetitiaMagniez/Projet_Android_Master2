@@ -14,8 +14,8 @@ class AnimeQuoteRepository {
 
     suspend fun fetchData() {
         val response: AnimeResponse = AnimeRetrofitBuilder.getAnimeQuote().getRandomQuote()
-        val randomCountry = response.data
-        animeDao.insert(randomCountry.toRoom())
+        val randomAnime = response.data
+        animeDao.insert(randomAnime.toRoom())
     }
 
     fun deleteAll() {

@@ -9,7 +9,7 @@ import com.example.projet_android_master2.data.model.AnimeEntity
     entities = [
         AnimeEntity::class
     ],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 

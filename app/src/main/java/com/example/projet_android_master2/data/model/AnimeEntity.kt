@@ -11,6 +11,12 @@ data class AnimeEntity(
 
     @ColumnInfo(name = "poster")
     val poster: String,
+
+    @ColumnInfo(name = "genres")
+    val genres: String,
+
+    @ColumnInfo(name = "date")
+    val date: Long
 ){
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0
