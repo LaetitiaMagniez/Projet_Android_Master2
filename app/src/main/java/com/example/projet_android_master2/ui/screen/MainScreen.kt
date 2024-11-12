@@ -38,7 +38,7 @@ fun MainScreen(
         Button(
             onClick = onButtonClick,
             content = {
-                Text(" Voir la liste des Anime")
+                Text("Voir la liste des Anime")
             }
         )
         Button(
