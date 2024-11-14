@@ -22,7 +22,10 @@
     <string name="auth_toast_login">Has iniciado sesión</string>
     <string name="auth_toast_error_login">Por favor, ingresa un correo electrónico y una contraseña de al menos 6 caracteres.</string>
     <string name="auth_toast_disconnect">Has cerrado sesión</string>
-    <string name="auth_toast_error_disconnect">No se puede cerrar sesión</string>
     <string name="auth_user_id">UID de usuario: %1$s</string>
     <string name="auth_no_user_logged_in">No hay ningún usuario conectado</string>
+
+    <string name="register_toast_register">Está registrado</string>
+    <string name="register_toast_error_length">Introduzca una contraseña de al menos 6 caracteres.</string>
+    <string name="register_toast_error">Proporcione un correo electrónico y una contraseña.</string>
 </resources>
