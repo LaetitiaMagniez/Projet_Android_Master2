@@ -89,6 +89,7 @@ fun FirebaseAuthScreen(
             Spacer(modifier = Modifier.height(8.dp))
             Button(
                 onClick = onButton3Click,
+                modifier = Modifier.fillMaxWidth(),
                 content = {
                     Text(context.getString(R.string.auth_register))
                 }
@@ -98,18 +99,16 @@ fun FirebaseAuthScreen(
                 Text(text = errorMessage, color = Color.Red)
             }
             Spacer(modifier = Modifier.height(8.dp))
-            Button(
-                onClick = {
-                    if (user != null) {
+            if (user != null) {
+                Button(
+                    onClick = {
                         viewModel.disconnectUser()
                         Toast.makeText(context, context.getString(R.string.auth_toast_disconnect), Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(context, context.getString(R.string.auth_toast_error_disconnect), Toast.LENGTH_SHORT).show()
-                    }
-                },
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(context.getString(R.string.auth_disconnect))
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(context.getString(R.string.auth_disconnect))
+                }
             }
 
             OutlinedCard(

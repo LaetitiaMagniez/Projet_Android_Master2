@@ -22,7 +22,10 @@
     <string name="auth_toast_login">Vous êtes connecté</string>
     <string name="auth_toast_error_login">Merci de renseigner un mail et un mot de passe d\'au moins 6 caractères.</string>
     <string name="auth_toast_disconnect">Vous êtes déconnecté</string>
-    <string name="auth_toast_error_disconnect">Impossible de se déconnecter</string>
     <string name="auth_user_id">UID Utilisateur : %1$s</string>
     <string name="auth_no_user_logged_in">Aucun utilisateur connecté</string>
+
+    <string name="register_toast_register">Vous êtes inscrit</string>
+    <string name="register_toast_error_length">Veuillez renseigner un mot de passe d\'au moins 6 caractères.</string>
+    <string name="register_toast_error">Veuillez renseigner un email et un mot de passe.</string>
 </resources>

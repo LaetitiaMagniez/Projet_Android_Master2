@@ -22,7 +22,10 @@
     <string name="auth_toast_login">You are logged in</string>
     <string name="auth_toast_error_login">Please enter an email and a password with at least 6 characters.</string>
     <string name="auth_toast_disconnect">You are logged out</string>
-    <string name="auth_toast_error_disconnect">Unable to log out</string>
     <string name="auth_user_id">User UID: %1$s</string>
     <string name="auth_no_user_logged_in">No user logged in</string>
+
+    <string name="register_toast_register">You are registered</string>
+    <string name="register_toast_error_length">Please enter a password of at least 6 characters.</string>
+    <string name="register_toast_error">Please provide an email and password.</string>
 </resources>
