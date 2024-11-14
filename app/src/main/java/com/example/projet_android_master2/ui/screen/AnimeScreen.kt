@@ -44,6 +44,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.example.projet_android_master2.R
 import com.example.projet_android_master2.ui.model.AnimeObject
 import com.example.projet_android_master2.ui.viewmodel.AnimeViewModel
 
@@ -53,13 +54,14 @@ fun AnimeScreen(
     navController: NavController,
     viewModel: AnimeViewModel = viewModel()
 ) {
+    val context = LocalContext.current
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Liste Animes") },
+                title = { Text(context.getString(R.string.anime_anime_list)) },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = context.getString(R.string.anime_back_button))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -72,12 +74,12 @@ fun AnimeScreen(
             Row {
                 Button(
                     modifier = Modifier.weight(1f),
-                    content = { Text("Ajouter") },
+                    content = { Text(context.getString(R.string.anime_add_button)) },
                     onClick = { viewModel.insertNewQuote() }
                 )
                 Button(
                     modifier = Modifier.weight(1f),
-                    content = { Text("Supprimer") },
+                    content = { Text(context.getString(R.string.anime_delete_button)) },
                     onClick = { viewModel.deleteAllQuote() }
                 )
             }
@@ -134,6 +136,7 @@ private fun MyAnimeScreen(modifier: Modifier) {
 
 @Composable
 fun HeaderItem(date: String) {
+    val context = LocalContext.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -143,7 +146,7 @@ fun HeaderItem(date: String) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Date d'insertion : $date",
+            text = context.getString(R.string.anime_insertion_date, date),
             style = MaterialTheme.typography.titleMedium.copy(
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
@@ -194,7 +197,7 @@ fun AnimeItem(title: String, poster: String) {
             .fillMaxWidth()
             .padding(8.dp)
             .clickable {
-                Toast.makeText(context, "Titre: $title", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, context.getString(R.string.anime_toast_title, title), Toast.LENGTH_SHORT).show()
             }
     ) {
         Column(
@@ -204,7 +207,7 @@ fun AnimeItem(title: String, poster: String) {
                 model = ImageRequest.Builder(context)
                     .data(poster)
                     .build(),
-                contentDescription = "Poster of $title",
+                contentDescription = context.getString(R.string.anime_toast_title, title),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp),
