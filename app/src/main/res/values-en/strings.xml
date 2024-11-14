@@ -19,4 +19,10 @@
     <string name="auth_disconnect">Disconnect</string>
     <string name="auth_no_errors">No errors</string>
     <string name="auth_log_details">Log details</string>
+    <string name="auth_toast_login">You are logged in</string>
+    <string name="auth_toast_error_login">Please enter an email and a password with at least 6 characters.</string>
+    <string name="auth_toast_disconnect">You are logged out</string>
+    <string name="auth_toast_error_disconnect">Unable to log out</string>
+    <string name="auth_user_id">User UID: %1$s</string>
+    <string name="auth_no_user_logged_in">No user logged in</string>
 </resources>

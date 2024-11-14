@@ -12,11 +12,17 @@
     <string name="anime_toast_title">Título: %1$s</string>
     <string name="anime_insertion_date">Fecha de inserción: %1$s</string>
 
-    <string name="auth_email">Email</string>
-    <string name="auth_password">Password</string>
-    <string name="auth_register">Register</string>
-    <string name="auth_login">Login</string>
-    <string name="auth_disconnect">Disconnect</string>
-    <string name="auth_no_errors">No errors</string>
-    <string name="auth_log_details">Log details</string>
+    <string name="auth_email">Correo electrónico</string>
+    <string name="auth_password">Contraseña</string>
+    <string name="auth_register">Registrarse</string>
+    <string name="auth_login">Iniciar sesión</string>
+    <string name="auth_disconnect">Cerrar sesión</string>
+    <string name="auth_no_errors">Sin errores</string>
+    <string name="auth_log_details">Detalles de registro</string>
+    <string name="auth_toast_login">Has iniciado sesión</string>
+    <string name="auth_toast_error_login">Por favor, ingresa un correo electrónico y una contraseña de al menos 6 caracteres.</string>
+    <string name="auth_toast_disconnect">Has cerrado sesión</string>
+    <string name="auth_toast_error_disconnect">No se puede cerrar sesión</string>
+    <string name="auth_user_id">UID de usuario: %1$s</string>
+    <string name="auth_no_user_logged_in">No hay ningún usuario conectado</string>
 </resources>

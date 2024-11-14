@@ -76,9 +76,9 @@ fun FirebaseAuthScreen(
                 onClick = {
                     if (email.isNotEmpty() && password.isNotEmpty()) {
                         viewModel.loginUser(email, password)
-                        Toast.makeText(context, "Vous êtes connecté", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.auth_toast_login), Toast.LENGTH_SHORT).show()
                     } else {
-                        errorMessage = "Merci de renseigner un mail et un mot de passe d'au moins 6 caractères."
+                        errorMessage = context.getString(R.string.auth_toast_error_login)
                         Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
                     }
                 },
@@ -102,9 +102,9 @@ fun FirebaseAuthScreen(
                 onClick = {
                     if (user != null) {
                         viewModel.disconnectUser()
-                        Toast.makeText(context, "Vous êtes déconnecté", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.auth_toast_disconnect), Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(context, "Impossible de se déconnecter", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.auth_toast_error_disconnect), Toast.LENGTH_SHORT).show()
                     }
                 },
                 modifier = Modifier.fillMaxWidth()
@@ -121,9 +121,9 @@ fun FirebaseAuthScreen(
                 Text(
                     if (user != null) {
                         val userId = user!!.uid
-                        "User ID : $userId"
+                        context.getString(R.string.auth_user_id, userId)
                     } else {
-                        "Aucun utilisateur connecté"
+                        context.getString(R.string.auth_no_user_logged_in)
                     }
                 )
             }
