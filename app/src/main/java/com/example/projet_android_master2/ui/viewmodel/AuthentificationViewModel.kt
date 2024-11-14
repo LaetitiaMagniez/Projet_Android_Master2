@@ -1,11 +1,11 @@
-package com.example.projet_android_master2.firebase.viewmodel
+package com.example.projet_android_master2.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.projet_android_master2.firebase.repository.FirebaseAuthRepository
 import com.google.firebase.auth.FirebaseUser
 
-class FirebaseAuthViewModel : ViewModel() {
+class AuthentificationViewModel : ViewModel() {
 
 
     private val mFirebaseAuthRepository: FirebaseAuthRepository by lazy { FirebaseAuthRepository() }

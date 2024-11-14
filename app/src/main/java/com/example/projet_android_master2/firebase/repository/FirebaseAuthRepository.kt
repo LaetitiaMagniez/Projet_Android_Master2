@@ -1,6 +1,5 @@
 package com.example.projet_android_master2.firebase.repository
 
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
