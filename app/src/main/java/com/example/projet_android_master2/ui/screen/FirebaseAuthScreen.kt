@@ -15,8 +15,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.projet_android_master2.R
 import com.example.projet_android_master2.firebase.viewmodel.FirebaseAuthViewModel
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import androidx.compose.runtime.livedata.observeAsState
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -28,7 +28,8 @@ fun FirebaseAuthScreen(
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf("") }
-    val user = Firebase.auth.currentUser
+
+    val user by viewModel.mCurrentUser.observeAsState(null)
     val context = LocalContext.current
 
     Scaffold(
@@ -50,12 +51,11 @@ fun FirebaseAuthScreen(
             )
         }
     ) { padding ->
-        // Applique le padding de Scaffold au Column pour éviter qu'il soit masqué par la TopAppBar
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding) // applique le padding reçu du Scaffold ici
-                .padding(16.dp) // ajoutez du padding supplémentaire pour l'espace intérieur
+                .padding(padding)
+                .padding(16.dp)
         ) {
             TextField(
                 value = email,
@@ -79,7 +79,6 @@ fun FirebaseAuthScreen(
                         Toast.makeText(context, "vous êtes connecté", Toast.LENGTH_SHORT).show()
                     } else {
                         errorMessage = "Merci de renseigner un mail et un mot de passe d'au moins 6 caractères."
-                        Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
                     }
                 },
                 modifier = Modifier.fillMaxWidth()
@@ -91,42 +90,41 @@ fun FirebaseAuthScreen(
                 onClick = onButton3Click,
                 content = {
                     Text(context.getString(R.string.auth_register))
-                }
+                },
+                modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(16.dp))
             if (errorMessage.isNotEmpty()) {
                 Text(text = errorMessage, color = Color.Red)
             }
             Spacer(modifier = Modifier.height(8.dp))
-            Button(
-                onClick = {
-                    if (user != null) {
+
+            // Affiche le bouton de déconnexion seulement si l'utilisateur est connecté
+            if (user != null) {
+                Button(
+                    onClick = {
                         viewModel.disconnectUser()
                         Toast.makeText(context, "Vous êtes déconnecté", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(context, "impossible de se déconnecter", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                },
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(context.getString(R.string.auth_disconnect))
-            }
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(context.getString(R.string.auth_disconnect))
+                }
 
-            OutlinedCard(
-                colors = CardDefaults.cardColors(containerColor = Color.LightGray),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            ) {
-                Text(
-                    if (user != null) {
-                        val userId = user.uid
-                        "User ID : $userId"
-                    } else {
-                        "Aucun utilisateur connecté"
-                    }
-                )
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // Affiche la carte avec l'ID utilisateur seulement si l'utilisateur est connecté
+                OutlinedCard(
+                    colors = CardDefaults.cardColors(containerColor = Color.LightGray),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp)
+                ) {
+                    Text("User ID : ${user!!.uid}")
+                }
+            } else {
+                // Affiche un message indiquant qu'aucun utilisateur n'est connecté
+                Text("Aucun utilisateur connecté", color = Color.Gray)
             }
         }
     }

@@ -79,11 +79,16 @@ fun MyFirebaseRegisterScreen(modifier: Modifier) {
         Spacer(modifier = Modifier.height(8.dp))
         Button(
             onClick = {
-                if (email.isNotEmpty() && password.isNotEmpty()) {
+                if (email.isNotEmpty() && password.isNotEmpty() && password.length>6) {
                     viewModel.registerNewUser(email, password)
                     Toast.makeText(context, "Vous êtes inscrit", Toast.LENGTH_SHORT).show()
-                } else {
-                    errorMessage = "Veuillez entrer un email et un mot de passe."
+                }
+                else if(password.length<6){
+                    errorMessage = "Veuillez renseigner un mot de passe d'au moins 6 caractères"
+                    Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    errorMessage = "Veuillez renseigner un email et un mot de passe."
                     Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
                 }
             },
