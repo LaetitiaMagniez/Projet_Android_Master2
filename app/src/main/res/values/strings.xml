@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Projet_Android_Master2</string>
+
+    <string name="main_team_members">Membres de l\'équipe :</string>
+    <string name="main_anime_list">Voir la liste des animés</string>
+    <string name="main_auth_firebase">Authentification Firebase</string>
+
+    <string name="anime_anime_list">Liste Animes</string>
+    <string name="anime_back_button">Retour</string>
+    <string name="anime_add_button">Ajouter</string>
+    <string name="anime_delete_button">Supprimer</string>
+    <string name="anime_toast_title">Titre : %1$s</string>
+    <string name="anime_insertion_date">Date d\'insertion : %1$s</string>
 </resources>

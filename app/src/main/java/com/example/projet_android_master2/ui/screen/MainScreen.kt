@@ -11,13 +11,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.example.projet_android_master2.R
 
 @Composable
 fun MainScreen(
     onButtonClick: () -> Unit,
     onButton2Click: () -> Unit,
 ) {
+    val context = LocalContext.current
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -25,7 +28,7 @@ fun MainScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Membres de l'équipe",
+        Text(text = context.getString(R.string.main_team_members),
             modifier = Modifier.padding(bottom = 8.dp))
         Text(
             text = "Laëtitia Magniez",
@@ -38,12 +41,12 @@ fun MainScreen(
         Button(
             onClick = onButtonClick,
             content = {
-                Text("Voir la liste des Anime")
+                Text(context.getString(R.string.main_anime_list))
             }
         )
         Button(
             content = {
-                Text("Authentification Firebase")
+                Text(context.getString(R.string.main_auth_firebase))
             },
             onClick = { onButton2Click() }
         )
