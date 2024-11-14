@@ -11,4 +11,12 @@
     <string name="anime_delete_button">Eliminar</string>
     <string name="anime_toast_title">Título: %1$s</string>
     <string name="anime_insertion_date">Fecha de inserción: %1$s</string>
+
+    <string name="auth_email">Email</string>
+    <string name="auth_password">Password</string>
+    <string name="auth_register">Register</string>
+    <string name="auth_login">Login</string>
+    <string name="auth_disconnect">Disconnect</string>
+    <string name="auth_no_errors">No errors</string>
+    <string name="auth_log_details">Log details</string>
 </resources>
