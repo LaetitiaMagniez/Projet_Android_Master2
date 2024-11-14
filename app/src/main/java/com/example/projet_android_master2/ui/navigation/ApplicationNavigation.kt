@@ -9,6 +9,7 @@ object NavigationPath {
     const val MAIN_SCREEN = "main_screen"
     const val ANIME_SCREEN = "anime_screen"
     const val AUTH_SCREEN = "auth_screen"
+    const val REGISTER_SCREEN = "register_screen"
 }
 
 @Composable
@@ -28,6 +29,7 @@ fun HomeNavHost(
             },
         )
         addAnimeScreenNavigation(navController = navController)
-        addAuthentificationScreenNavigation(navController = navController)
+        addAuthentificationScreenNavigation(navController = navController, onButton3Click = {
+            navController.navigate(NavigationPath.REGISTER_SCREEN) })
     }
 }
