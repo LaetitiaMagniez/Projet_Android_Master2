@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.projet_android_master2.R
-import com.example.projet_android_master2.firebase.viewmodel.FirebaseAuthViewModel
+import com.example.projet_android_master2.ui.viewmodel.AuthentificationViewModel
 import androidx.compose.runtime.livedata.observeAsState
 
 
@@ -24,7 +24,7 @@ fun FirebaseAuthScreen(
     navController: NavController,
     onButton3Click: () -> Unit,
 ) {
-    val viewModel: FirebaseAuthViewModel = viewModel()
+    val viewModel: AuthentificationViewModel = viewModel()
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf("") }

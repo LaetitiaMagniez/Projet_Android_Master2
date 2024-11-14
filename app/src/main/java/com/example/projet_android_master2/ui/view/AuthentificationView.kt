@@ -1,4 +1,4 @@
-package com.example.projet_android_master2.firebase.view
+package com.example.projet_android_master2.ui.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.projet_android_master2.databinding.FragmentFirebaseAuthBinding
-import com.example.projet_android_master2.firebase.viewmodel.FirebaseAuthViewModel
+import com.example.projet_android_master2.ui.viewmodel.AuthentificationViewModel
 import com.google.firebase.auth.FirebaseUser
 
-class FirebaseAuthView : Fragment() {
+class AuthentificationView : Fragment() {
 
-    private lateinit var mViewModel: FirebaseAuthViewModel
+    private lateinit var mViewModel: AuthentificationViewModel
     private var _binding: FragmentFirebaseAuthBinding? = null
     private val binding get() = _binding!!
 
@@ -29,7 +29,6 @@ class FirebaseAuthView : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Initialiser le View Binding
         _binding = FragmentFirebaseAuthBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -37,10 +36,8 @@ class FirebaseAuthView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialisation du ViewModel
-        mViewModel = ViewModelProvider(this)[FirebaseAuthViewModel::class.java]
+        mViewModel = ViewModelProvider(this)[AuthentificationViewModel::class.java]
 
-        // Mise en place des listeners pour les boutons
         binding.firebaseButtonRegister.setOnClickListener { register() }
         binding.firebaseButtonLogin.setOnClickListener { login() }
         binding.firebaseButtonDisconnect.setOnClickListener { disconnect() }
@@ -60,7 +57,7 @@ class FirebaseAuthView : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null // Éviter les fuites de mémoire
+        _binding = null
     }
 
     private fun checkConformityFields(): Boolean {
