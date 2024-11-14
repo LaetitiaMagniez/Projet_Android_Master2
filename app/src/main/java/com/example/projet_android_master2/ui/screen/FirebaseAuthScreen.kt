@@ -23,8 +23,8 @@ import androidx.compose.runtime.livedata.observeAsState
 fun FirebaseAuthScreen(
     navController: NavController,
     onButton3Click: () -> Unit,
-    viewModel: FirebaseAuthViewModel = viewModel(),
 ) {
+    val viewModel: FirebaseAuthViewModel = viewModel()
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf("") }
