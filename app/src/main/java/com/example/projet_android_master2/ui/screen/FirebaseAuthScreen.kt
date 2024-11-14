@@ -15,20 +15,21 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.projet_android_master2.R
 import com.example.projet_android_master2.firebase.viewmodel.FirebaseAuthViewModel
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import androidx.compose.runtime.livedata.observeAsState
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FirebaseAuthScreen(
     navController: NavController,
     onButton3Click: () -> Unit,
+    viewModel: FirebaseAuthViewModel = viewModel(),
 ) {
-    val viewModel: FirebaseAuthViewModel = viewModel()
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf("") }
-    val user = Firebase.auth.currentUser
+
+    val user by viewModel.mCurrentUser.observeAsState(null)
     val context = LocalContext.current
 
     Scaffold(
@@ -50,12 +51,11 @@ fun FirebaseAuthScreen(
             )
         }
     ) { padding ->
-        // Applique le padding de Scaffold au Column pour éviter qu'il soit masqué par la TopAppBar
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding) // applique le padding reçu du Scaffold ici
-                .padding(16.dp) // ajoutez du padding supplémentaire pour l'espace intérieur
+                .padding(padding)
+                .padding(16.dp)
         ) {
             TextField(
                 value = email,
@@ -76,7 +76,7 @@ fun FirebaseAuthScreen(
                 onClick = {
                     if (email.isNotEmpty() && password.isNotEmpty()) {
                         viewModel.loginUser(email, password)
-                        Toast.makeText(context, "vous êtes connecté", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Vous êtes connecté", Toast.LENGTH_SHORT).show()
                     } else {
                         errorMessage = "Merci de renseigner un mail et un mot de passe d'au moins 6 caractères."
                         Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
@@ -104,8 +104,7 @@ fun FirebaseAuthScreen(
                         viewModel.disconnectUser()
                         Toast.makeText(context, "Vous êtes déconnecté", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(context, "impossible de se déconnecter", Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(context, "Impossible de se déconnecter", Toast.LENGTH_SHORT).show()
                     }
                 },
                 modifier = Modifier.fillMaxWidth()
@@ -121,7 +120,7 @@ fun FirebaseAuthScreen(
             ) {
                 Text(
                     if (user != null) {
-                        val userId = user.uid
+                        val userId = user!!.uid
                         "User ID : $userId"
                     } else {
                         "Aucun utilisateur connecté"
